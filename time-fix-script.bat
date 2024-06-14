@@ -8,7 +8,7 @@ REM Enable Delayed Expansion to handle variables inside loops or code blocks
 SETLOCAL EnableDelayedExpansion
 
 REM Refresh log
-ECHO ^>^>^> Running Dakota's Time Fix Script... > C:\Users\synth\Documents\Logs\time-fix-log.txt
+ECHO ^>^>^> Running Time Fix Script... > %USERPROFILE%\Documents\Logs\time-fix-log.txt
 
 
 REM Initialize CYCLE variable based on input parameter %1
@@ -21,7 +21,7 @@ IF "%CYCLE%"=="" SET /A CYCLE=2
 REM We should really check if we are even connected...
 PING -n 1 time.windows.com
 IF %ERRORLEVEL% NEQ 0 (
-    ECHO Unable to Access Windows Time Service. Exiting... >> C:\Users\synth\Documents\Logs\time-fix-log.txt
+    ECHO Unable to Access Windows Time Service. Exiting... >> %USERPROFILE%\Documents\Logs\time-fix-log.txt
     GOTO END
 )
 
@@ -42,7 +42,7 @@ IF %ERRORLEVEL% EQU 0 (
     )
 
     ECHO Sync Successful.
-    ECHO Sync Successful on: %DATE% ^| %TIME% >> C:\Users\synth\Documents\Logs\time-fix-log.txt
+    ECHO Sync Successful on: %DATE% ^| %TIME% >> %USERPROFILE%\Documents\Logs\time-fix-log.txt
     GOTO END
 )
 
